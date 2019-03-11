@@ -25,7 +25,7 @@ SECRET_KEY = '-+gv(-^cdwlyfv^5v8pcg)192k6&7tcgn04vf$936)j2^(c8sv'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', 'miboggle.herokuapp.com']
 
 
 # Application definition
