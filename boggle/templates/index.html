@@ -15,3 +15,50 @@
         {% endfor %}
     </tbody>
 </table>
+
+<p id="timer">0</p>
+
+<button onclick="startTimer()">Start/Pause time</button>
+<button onclick="location.reload()">Reload</button>
+
+<script>
+    var interval = null;
+    var timer = 60 * 3;
+    function startTimer() {
+        if (interval != null) {
+            blurBoard();
+            clearInterval(interval);
+            interval = null;
+            return;
+        } else {
+            Array.from(document.getElementsByTagName('td')).forEach(element => {
+                element.style.color = 'brown';
+            });
+            var display = document.querySelector('#timer');
+            var minutes, seconds;
+        }
+        interval = setInterval(function () {
+            minutes = parseInt(timer / 60, 10)
+            seconds = parseInt(timer % 60, 10);
+
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            display.textContent = minutes + ":" + seconds;
+
+            if (--timer < 0) {
+                clearInterval(interval);
+            }
+        }, 1000);
+    }
+
+    document.addEventListener("DOMContentLoaded", function(event) {
+        blurBoard();
+    });
+
+    function blurBoard() {
+        Array.from(document.getElementsByTagName('td')).forEach(function(element) {
+            element.style.color = 'transparent';
+        });
+    }
+</script>
