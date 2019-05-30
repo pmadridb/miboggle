@@ -33,7 +33,9 @@ def index(request):
     index = 0
     for i in range(w):
         for j in range(h):
-            board[i][j] = cubes[index][random.randint(0,5)]
+            random_index = random.randint(0,len(cubes)-1)
+            board[i][j] = cubes[random_index][random.randint(0,5)]
+            cubes.pop(random_index)
             if board[i][j] == 'Q':
                 board[i][j] = 'Qu'
             index += 1
